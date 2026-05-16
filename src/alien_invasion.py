@@ -1,5 +1,6 @@
-import sys 
+import sys
 import pygame
+
 
 class AlienInvasion:
     def __init__(self):
@@ -13,6 +14,7 @@ class AlienInvasion:
                         sys.exit()
 
                 pygame.display.flip()
+
 
 if __name__ == "__main__":
     alien_invasion = AlienInvasion()
