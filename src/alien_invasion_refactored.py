@@ -14,7 +14,7 @@ from game_renderer import GameRenderer
 
 
 class AlienInvasion:
-    """Gerencia o jogo e seus comportamentos (orquestrador)."""
+    """Orquestrador principal do jogo (DIP aplicado)."""
 
     def __init__(self) -> None:
         pygame.init()
@@ -28,18 +28,16 @@ class AlienInvasion:
         self.ship = Ship(self.screen, self.settings)
         self.bg_color = self.settings.bg_color
 
-        # Managers (SRP)
+        # Injeção de dependências (DIP)
         self.bullet_manager = BulletManager(self.screen, self.settings, self.ship)
-        self.fleet_manager = FleetManager(self.screen, self.settings, self.ship, Alien)
+        self.fleet_manager = FleetManager(self.screen, self.settings, self.ship, FastAlien)  # LSP aqui
         self.event_handler = GameEventHandler(self.ship, self.bullet_manager)
         self.renderer = GameRenderer(
             self.screen, self.bg_color, self.ship,
             self.bullet_manager.bullets, self.fleet_manager.aliens
         )
 
-
     def run_game(self) -> NoReturn:
-        """Loop principal do jogo."""
         self.fleet_manager.create_fleet()
 
         while True:
@@ -47,9 +45,7 @@ class AlienInvasion:
             self._update_game_state()
             self.renderer.render_screen()
 
-
     def _update_game_state(self) -> None:
-        """Atualiza todos os elementos do jogo."""
         self.ship.update()
         self.bullet_manager.update_bullets(self.fleet_manager.aliens)
         self.fleet_manager.update_aliens()
