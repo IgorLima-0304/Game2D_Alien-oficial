@@ -110,9 +110,3 @@ Adicione aqui a licença do projeto (por exemplo MIT) ou remova esta seção se 
 
 Igor Lima — https://github.com/IgorLima-0304
 
-
----
-
-Notas:
-- Este README é um modelo profissional e deve ser ajustado ao conteúdo real do repositório (nome exato do arquivo principal, descrição das mecânicas, créditos a autores de assets, instruções específicas de build e execução).
-- Se quiser, posso atualizar o README com detalhes reais se você me indicar o arquivo principal do jogo e onde os assets estão localizados, ou posso procurar automaticamente no repositório para preencher esses campos.
